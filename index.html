@@ -1,11 +1,440 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <meta name="description"
+        content="Find houses and apartments for sale or rent with Dream Home Real Estate.">
+
+    <title>Dream Home Real Estate | Property Listing</title>
 </head>
+
 <body>
-    
+
+    <!-- HEADER -->
+    <header id="home">
+
+        <h1>Dream Home Real Estate</h1>
+
+        <p>Find Your Dream Home With Us</p>
+
+        <!-- NAVIGATION -->
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#filters">Search Property</a></li>
+                <li><a href="#properties">Properties</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+
+            <h2>Welcome to Dream Home Real Estate</h2>
+
+            <p>
+                Find your perfect home with Dream Home Real Estate.
+                We provide different types of houses and apartments
+                available for sale and rent at affordable prices.
+                Explore our property listings and choose the best
+                property according to your needs and budget.
+            </p>
+
+        </section>
+
+
+        <!-- PROPERTY FILTER SECTION -->
+        <section id="filters">
+
+            <h2>Search Your Property</h2>
+
+            <form id="filterForm">
+
+                <!-- PROPERTY TYPE FILTER -->
+                <fieldset>
+
+                    <legend>Choose Property Type</legend>
+
+                    <label for="propertyType">Property Type:</label>
+
+                    <select id="propertyType" name="propertyType">
+
+                        <option value="all">All Properties</option>
+
+                        <option value="sale">For Sale</option>
+
+                        <option value="rent">For Rent</option>
+
+                    </select>
+
+                </fieldset>
+
+
+                <!-- PRICE RANGE FILTER -->
+                <fieldset>
+
+                    <legend>Choose Your Price Range</legend>
+
+                    <label for="minPrice">Minimum Price (₹):</label>
+
+                    <input
+                        type="number"
+                        id="minPrice"
+                        name="minPrice"
+                        placeholder="Enter minimum price"
+                        min="0"
+                    >
+
+                    <br><br>
+
+                    <label for="maxPrice">Maximum Price (₹):</label>
+
+                    <input
+                        type="number"
+                        id="maxPrice"
+                        name="maxPrice"
+                        placeholder="Enter maximum price"
+                        min="0"
+                    >
+
+                </fieldset>
+
+
+                <!-- FILTER BUTTONS -->
+                <button type="submit" id="searchBtn">
+                    Search Properties
+                </button>
+
+                <button type="reset" id="resetBtn">
+                    Reset Filters
+                </button>
+
+            </form>
+
+
+            <!-- SALE AND RENT FILTER BUTTONS -->
+            <h3>Browse By Property Type</h3>
+
+            <div id="typeButtons">
+
+                <button type="button" data-filter="all">
+                    All Properties
+                </button>
+
+                <button type="button" data-filter="sale">
+                    For Sale
+                </button>
+
+                <button type="button" data-filter="rent">
+                    For Rent
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROPERTY LISTING SECTION -->
+        <section id="properties">
+
+            <h2>Our Available Properties</h2>
+
+            <p>Explore our latest property listings.</p>
+
+
+            <!-- PROPERTY CARD 1 -->
+            <article class="property-card"
+                data-type="sale"
+                data-price="4500000">
+
+                <figure>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600"
+                        alt="Modern family house with garden"
+                        width="400"
+                        loading="lazy"
+                    >
+
+                    <figcaption>Modern Family House</figcaption>
+
+                </figure>
+
+                <h3>Modern Family House</h3>
+
+                <p><strong>Price:</strong> ₹45,00,000</p>
+
+                <p><strong>Location:</strong> Lucknow, Uttar Pradesh</p>
+
+                <p><strong>Bedrooms:</strong> 3</p>
+
+                <p><strong>Property Type:</strong> Sale</p>
+
+                <p>
+                    A beautiful modern house with spacious rooms,
+                    a garden and a comfortable living area.
+                </p>
+
+                <a href="#contact">View Details</a>
+
+            </article>
+
+
+            <!-- PROPERTY CARD 2 -->
+            <article class="property-card"
+                data-type="rent"
+                data-price="15000">
+
+                <figure>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600"
+                        alt="Luxury apartment building"
+                        width="400"
+                        loading="lazy"
+                    >
+
+                    <figcaption>Luxury Apartment</figcaption>
+
+                </figure>
+
+                <h3>Luxury Apartment</h3>
+
+                <p><strong>Price:</strong> ₹15,000 / Month</p>
+
+                <p><strong>Location:</strong> Gomti Nagar, Lucknow</p>
+
+                <p><strong>Bedrooms:</strong> 2</p>
+
+                <p><strong>Property Type:</strong> Rent</p>
+
+                <p>
+                    A comfortable apartment with modern facilities
+                    and a beautiful interior.
+                </p>
+
+                <a href="#contact">View Details</a>
+
+            </article>
+
+
+            <!-- PROPERTY CARD 3 -->
+            <article class="property-card"
+                data-type="sale"
+                data-price="6500000">
+
+                <figure>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600"
+                        alt="Spacious independent house"
+                        width="400"
+                        loading="lazy"
+                    >
+
+                    <figcaption>Independent House</figcaption>
+
+                </figure>
+
+                <h3>Independent House</h3>
+
+                <p><strong>Price:</strong> ₹65,00,000</p>
+
+                <p><strong>Location:</strong> Kanpur, Uttar Pradesh</p>
+
+                <p><strong>Bedrooms:</strong> 4</p>
+
+                <p><strong>Property Type:</strong> Sale</p>
+
+                <p>
+                    A spacious independent house suitable for
+                    a large family.
+                </p>
+
+                <a href="#contact">View Details</a>
+
+            </article>
+
+
+            <!-- PROPERTY CARD 4 -->
+            <article class="property-card"
+                data-type="rent"
+                data-price="12000">
+
+                <figure>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600"
+                        alt="Comfortable apartment living room"
+                        width="400"
+                        loading="lazy"
+                    >
+
+                    <figcaption>Comfortable Apartment</figcaption>
+
+                </figure>
+
+                <h3>Comfortable Apartment</h3>
+
+                <p><strong>Price:</strong> ₹12,000 / Month</p>
+
+                <p><strong>Location:</strong> Aliganj, Lucknow</p>
+
+                <p><strong>Bedrooms:</strong> 2</p>
+
+                <p><strong>Property Type:</strong> Rent</p>
+
+                <p>
+                    A well-maintained apartment with a comfortable
+                    living area and bedrooms.
+                </p>
+
+                <a href="#contact">View Details</a>
+
+            </article>
+
+
+            <!-- PROPERTY CARD 5 -->
+            <article class="property-card"
+                data-type="sale"
+                data-price="5500000">
+
+                <figure>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600"
+                        alt="Beautiful residential house"
+                        width="400"
+                        loading="lazy"
+                    >
+
+                    <figcaption>Beautiful Residential House</figcaption>
+
+                </figure>
+
+                <h3>Beautiful Residential House</h3>
+
+                <p><strong>Price:</strong> ₹55,00,000</p>
+
+                <p><strong>Location:</strong> Ayodhya Road, Lucknow</p>
+
+                <p><strong>Bedrooms:</strong> 3</p>
+
+                <p><strong>Property Type:</strong> Sale</p>
+
+                <p>
+                    A beautiful residential property with
+                    spacious bedrooms and modern facilities.
+                </p>
+
+                <a href="#contact">View Details</a>
+
+            </article>
+
+
+            <!-- PROPERTY CARD 6 -->
+            <article class="property-card"
+                data-type="rent"
+                data-price="18000">
+
+                <figure>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600"
+                        alt="Modern furnished apartment"
+                        width="400"
+                        loading="lazy"
+                    >
+
+                    <figcaption>Furnished Apartment</figcaption>
+
+                </figure>
+
+                <h3>Furnished Apartment</h3>
+
+                <p><strong>Price:</strong> ₹18,000 / Month</p>
+
+                <p><strong>Location:</strong> Indira Nagar, Lucknow</p>
+
+                <p><strong>Bedrooms:</strong> 3</p>
+
+                <p><strong>Property Type:</strong> Rent</p>
+
+                <p>
+                    A furnished apartment with a modern kitchen
+                    and comfortable rooms.
+                </p>
+
+                <a href="#contact">View Details</a>
+
+            </article>
+
+        </section>
+
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+
+            <h2>Contact Us</h2>
+
+            <p>
+                Want to know more about a property?
+                Contact our real estate team.
+            </p>
+
+            <address>
+
+                <p>
+                    <strong>Office:</strong>
+                    Lucknow, Uttar Pradesh, India
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    <a href="mailto:info@dreamhome.com">
+                        info@dreamhome.com
+                    </a>
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    <a href="tel:+919876543210">
+                        +91 9876543210
+                    </a>
+                </p>
+
+            </address>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            &copy; 2026 Dream Home Real Estate.
+            All Rights Reserved.
+        </p>
+
+        <p>Group 16 - Real Estate Listing Page</p>
+
+        <a href="#home">Back to Top</a>
+
+    </footer>
+
 </body>
+
 </html>
