@@ -7,128 +7,743 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Find houses and apartments for sale or rent with Dream Home Real Estate.">
+        content="Find your dream home with Dream Home Real Estate. Explore houses and apartments for sale and rent.">
 
-    <title>Dream Home Real Estate | Property Listing</title>
+    <title>Dream Home Real Estate | Find Your Perfect Home</title>
+
+    <style>
+        /* GENERAL STYLING */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #263238;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, input, select, textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* HEADER */
+        header {
+            background: #102a43;
+            color: white;
+            padding: 18px 7%;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #f5b942;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a:hover {
+            color: #f5b942;
+        }
+
+        .nav-button {
+            background: #f5b942;
+            color: #102a43;
+            padding: 9px 17px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 440px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+            background:
+                linear-gradient(rgba(8, 29, 48, 0.75),
+                rgba(8, 29, 48, 0.65)),
+                url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .primary-btn {
+            display: inline-block;
+            background: #f5b942;
+            color: #102a43;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .primary-btn:hover {
+            background: #e5a927;
+        }
+
+        /* COMMON SECTIONS */
+        section {
+            padding: 60px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            color: #102a43;
+            font-size: 30px;
+        }
+
+        .section-title p {
+            color: #687786;
+        }
+
+        /* STATISTICS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: -35px;
+            position: relative;
+            padding: 0 7%;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 22px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .stat-card h2 {
+            color: #d99b24;
+            font-size: 28px;
+        }
+
+        /* ABOUT */
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        /* SEARCH FILTER */
+        .filter-section {
+            background: white;
+        }
+
+        .filter-box {
+            max-width: 1050px;
+            margin: auto;
+            background: #f5f7fa;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccd4dc;
+            border-radius: 5px;
+            background: white;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 22px;
+            flex-wrap: wrap;
+        }
+
+        .filter-actions button {
+            padding: 11px 22px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .search-btn {
+            background: #102a43;
+            color: white;
+        }
+
+        .reset-btn {
+            background: #dce3e9;
+            color: #263238;
+        }
+
+        /* PROPERTY BUTTONS */
+        .type-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .type-buttons button {
+            border: 1px solid #102a43;
+            background: white;
+            color: #102a43;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        .type-buttons button.active,
+        .type-buttons button:hover {
+            background: #102a43;
+            color: white;
+        }
+
+        /* PROPERTY LISTING */
+        .property-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .property-info select {
+            padding: 9px;
+            border-radius: 5px;
+            border: 1px solid #ccd4dc;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .property-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .property-body {
+            padding: 18px;
+        }
+
+        .property-body h3 {
+            color: #102a43;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #d18e16;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .property-details {
+            display: flex;
+            justify-content: space-between;
+            margin: 13px 0;
+            color: #687786;
+            font-size: 14px;
+        }
+
+        .property-tag {
+            display: inline-block;
+            background: #e4f2e9;
+            color: #247344;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .rent-tag {
+            background: #e3edfa;
+            color: #20558d;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .details-btn {
+            flex: 1;
+            background: #102a43;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .favorite-btn {
+            background: #f1f2f4;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 5px;
+            color: #d94b57;
+            font-size: 19px;
+        }
+
+        .favorite-btn.saved {
+            background: #ffe4e7;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 45px;
+            color: #687786;
+            display: none;
+        }
+
+        /* SERVICES */
+        .services {
+            background: white;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            padding: 28px;
+            text-align: center;
+            background: #f5f7fa;
+            border-radius: 8px;
+        }
+
+        .service-card .emoji {
+            font-size: 38px;
+        }
+
+        .service-card h3 {
+            margin: 12px 0;
+            color: #102a43;
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .contact-form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 550px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 10px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 7px;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 17px;
+            top: 12px;
+            border: none;
+            background: none;
+            font-size: 28px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer a {
+            color: #f5b942;
+        }
+
+        .back-top {
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .property-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-header {
+                flex-direction: column;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .property-grid,
+            .service-grid,
+            .contact-grid,
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 45px 5%;
+            }
+
+            .property-info {
+                align-items: stretch;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- HEADER -->
     <header id="home">
+        <div class="top-header">
 
-        <h1>Dream Home Real Estate</h1>
+            <div class="logo">
+                Dream <span>Home</span>
+            </div>
 
-        <p>Find Your Dream Home With Us</p>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#filters">Search</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
 
-        <!-- NAVIGATION -->
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#filters">Search Property</a></li>
-                <li><a href="#properties">Properties</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
+            <a href="#contact" class="nav-button">Get In Touch</a>
 
+        </div>
     </header>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- HERO SECTION -->
     <main>
+
+        <section class="hero">
+            <div class="hero-content">
+
+                <h1>Find Your Perfect Dream Home</h1>
+
+                <p>
+                    Discover beautiful houses and apartments
+                    for sale and rent at the best prices.
+                    Your dream property is just one click away!
+                </p>
+
+                <a href="#properties" class="primary-btn">
+                    Explore Properties
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- STATISTICS -->
+        <div class="stats">
+
+            <div class="stat-card">
+                <h2>500+</h2>
+                <p>Properties</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>300+</h2>
+                <p>Happy Clients</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>50+</h2>
+                <p>Locations</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>5+</h2>
+                <p>Years Experience</p>
+            </div>
+
+        </div>
+
 
         <!-- ABOUT SECTION -->
         <section id="about">
 
-            <h2>Welcome to Dream Home Real Estate</h2>
+            <div class="section-title">
+                <h2>About Dream Home</h2>
+                <p>Your trusted real estate partner</p>
+            </div>
 
-            <p>
-                Find your perfect home with Dream Home Real Estate.
-                We provide different types of houses and apartments
-                available for sale and rent at affordable prices.
-                Explore our property listings and choose the best
-                property according to your needs and budget.
-            </p>
+            <div class="about-content">
+
+                <p>
+                    Welcome to Dream Home Real Estate!
+                    We help people find their perfect homes.
+                    Our website provides different types of houses
+                    and apartments available for sale and rent.
+                </p>
+
+                <p>
+                    Our goal is to make property searching
+                    simple, affordable and convenient.
+                    Explore our listings and find a property
+                    that matches your needs and budget.
+                </p>
+
+            </div>
 
         </section>
 
 
-        <!-- PROPERTY FILTER SECTION -->
-        <section id="filters">
+        <!-- SEARCH FILTER SECTION -->
+        <section id="filters" class="filter-section">
 
-            <h2>Search Your Property</h2>
+            <div class="section-title">
+                <h2>Search Your Property</h2>
+                <p>Find a property according to your requirements</p>
+            </div>
 
-            <form id="filterForm">
+            <form class="filter-box" id="filterForm">
 
-                <!-- PROPERTY TYPE FILTER -->
-                <fieldset>
+                <div class="filter-grid">
 
-                    <legend>Choose Property Type</legend>
+                    <div class="form-group">
+                        <label for="propertyType">Property Type</label>
 
-                    <label for="propertyType">Property Type:</label>
+                        <select id="propertyType">
+                            <option value="all">All Properties</option>
+                            <option value="sale">For Sale</option>
+                            <option value="rent">For Rent</option>
+                        </select>
+                    </div>
 
-                    <select id="propertyType" name="propertyType">
+                    <div class="form-group">
+                        <label for="location">Location</label>
 
-                        <option value="all">All Properties</option>
+                        <select id="location">
+                            <option value="all">All Locations</option>
+                            <option value="lucknow">Lucknow</option>
+                            <option value="kanpur">Kanpur</option>
+                            <option value="ayodhya">Ayodhya</option>
+                        </select>
+                    </div>
 
-                        <option value="sale">For Sale</option>
+                    <div class="form-group">
+                        <label for="bedrooms">Bedrooms</label>
 
-                        <option value="rent">For Rent</option>
+                        <select id="bedrooms">
+                            <option value="all">Any Bedrooms</option>
+                            <option value="2">2 Bedrooms</option>
+                            <option value="3">3 Bedrooms</option>
+                            <option value="4">4 Bedrooms</option>
+                        </select>
+                    </div>
 
-                    </select>
+                    <div class="form-group">
+                        <label for="minPrice">Minimum Price (₹)</label>
 
-                </fieldset>
+                        <input type="number"
+                            id="minPrice"
+                            min="0"
+                            placeholder="Minimum price">
+                    </div>
 
+                    <div class="form-group">
+                        <label for="maxPrice">Maximum Price (₹)</label>
 
-                <!-- PRICE RANGE FILTER -->
-                <fieldset>
+                        <input type="number"
+                            id="maxPrice"
+                            min="0"
+                            placeholder="Maximum price">
+                    </div>
 
-                    <legend>Choose Your Price Range</legend>
+                    <div class="form-group">
+                        <label for="keyword">Search Keyword</label>
 
-                    <label for="minPrice">Minimum Price (₹):</label>
+                        <input type="search"
+                            id="keyword"
+                            placeholder="House, apartment...">
+                    </div>
 
-                    <input
-                        type="number"
-                        id="minPrice"
-                        name="minPrice"
-                        placeholder="Enter minimum price"
-                        min="0"
-                    >
+                </div>
 
-                    <br><br>
+                <div class="filter-actions">
 
-                    <label for="maxPrice">Maximum Price (₹):</label>
+                    <button type="submit" class="search-btn">
+                        Search Properties
+                    </button>
 
-                    <input
-                        type="number"
-                        id="maxPrice"
-                        name="maxPrice"
-                        placeholder="Enter maximum price"
-                        min="0"
-                    >
+                    <button type="reset" class="reset-btn">
+                        Reset Filters
+                    </button>
 
-                </fieldset>
-
-
-                <!-- FILTER BUTTONS -->
-                <button type="submit" id="searchBtn">
-                    Search Properties
-                </button>
-
-                <button type="reset" id="resetBtn">
-                    Reset Filters
-                </button>
+                </div>
 
             </form>
 
+        </section>
 
-            <!-- SALE AND RENT FILTER BUTTONS -->
-            <h3>Browse By Property Type</h3>
 
-            <div id="typeButtons">
+        <!-- PROPERTY LISTING -->
+        <section id="properties">
 
-                <button type="button" data-filter="all">
+            <div class="section-title">
+                <h2>Our Available Properties</h2>
+                <p>Choose the perfect property for your family</p>
+            </div>
+
+            <!-- QUICK FILTER BUTTONS -->
+            <div class="type-buttons">
+
+                <button type="button"
+                    class="active"
+                    data-filter="all">
                     All Properties
                 </button>
 
@@ -140,245 +755,393 @@
                     For Rent
                 </button>
 
+                <button type="button" data-filter="favorites">
+                    ♥ Favorites
+                </button>
+
+            </div>
+
+
+            <div class="property-info">
+
+                <p id="propertyCount" aria-live="polite">
+                    Showing 6 properties
+                </p>
+
+                <select id="sortProperties"
+                    aria-label="Sort properties">
+
+                    <option value="default">Sort Properties</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- PROPERTY CARDS -->
+            <div class="property-grid" id="propertyGrid">
+
+                <!-- PROPERTY 1 -->
+                <article class="property-card"
+                    data-id="1"
+                    data-type="sale"
+                    data-price="4500000"
+                    data-location="lucknow"
+                    data-beds="3">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700"
+                        alt="Modern family house"
+                        loading="lazy">
+
+                    <div class="property-body">
+
+                        <span class="property-tag">FOR SALE</span>
+
+                        <h3>Modern Family House</h3>
+
+                        <p class="price">₹45,00,000</p>
+
+                        <p>📍 Lucknow, Uttar Pradesh</p>
+
+                        <div class="property-details">
+                            <span>🛏 3 Bedrooms</span>
+                            <span>🚿 2 Bathrooms</span>
+                        </div>
+
+                        <p>
+                            A beautiful modern house with spacious
+                            rooms and a garden.
+                        </p>
+
+                        <div class="card-actions">
+
+                            <button class="details-btn"
+                                data-action="details">
+                                View Details
+                            </button>
+
+                            <button class="favorite-btn"
+                                data-action="favorite"
+                                aria-label="Add Modern Family House to favorites">
+                                ♡
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <!-- PROPERTY 2 -->
+                <article class="property-card"
+                    data-id="2"
+                    data-type="rent"
+                    data-price="15000"
+                    data-location="lucknow"
+                    data-beds="2">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700"
+                        alt="Luxury apartment"
+                        loading="lazy">
+
+                    <div class="property-body">
+
+                        <span class="property-tag rent-tag">FOR RENT</span>
+
+                        <h3>Luxury Apartment</h3>
+
+                        <p class="price">₹15,000 / Month</p>
+
+                        <p>📍 Gomti Nagar, Lucknow</p>
+
+                        <div class="property-details">
+                            <span>🛏 2 Bedrooms</span>
+                            <span>🚿 2 Bathrooms</span>
+                        </div>
+
+                        <p>
+                            A comfortable apartment with
+                            modern facilities and interiors.
+                        </p>
+
+                        <div class="card-actions">
+
+                            <button class="details-btn"
+                                data-action="details">
+                                View Details
+                            </button>
+
+                            <button class="favorite-btn"
+                                data-action="favorite"
+                                aria-label="Add Luxury Apartment to favorites">
+                                ♡
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <!-- PROPERTY 3 -->
+                <article class="property-card"
+                    data-id="3"
+                    data-type="sale"
+                    data-price="6500000"
+                    data-location="kanpur"
+                    data-beds="4">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700"
+                        alt="Spacious independent house"
+                        loading="lazy">
+
+                    <div class="property-body">
+
+                        <span class="property-tag">FOR SALE</span>
+
+                        <h3>Independent House</h3>
+
+                        <p class="price">₹65,00,000</p>
+
+                        <p>📍 Kanpur, Uttar Pradesh</p>
+
+                        <div class="property-details">
+                            <span>🛏 4 Bedrooms</span>
+                            <span>🚿 3 Bathrooms</span>
+                        </div>
+
+                        <p>
+                            A spacious independent house
+                            suitable for a large family.
+                        </p>
+
+                        <div class="card-actions">
+
+                            <button class="details-btn"
+                                data-action="details">
+                                View Details
+                            </button>
+
+                            <button class="favorite-btn"
+                                data-action="favorite"
+                                aria-label="Add Independent House to favorites">
+                                ♡
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <!-- PROPERTY 4 -->
+                <article class="property-card"
+                    data-id="4"
+                    data-type="rent"
+                    data-price="12000"
+                    data-location="lucknow"
+                    data-beds="2">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700"
+                        alt="Comfortable apartment"
+                        loading="lazy">
+
+                    <div class="property-body">
+
+                        <span class="property-tag rent-tag">FOR RENT</span>
+
+                        <h3>Comfortable Apartment</h3>
+
+                        <p class="price">₹12,000 / Month</p>
+
+                        <p>📍 Aliganj, Lucknow</p>
+
+                        <div class="property-details">
+                            <span>🛏 2 Bedrooms</span>
+                            <span>🚿 1 Bathroom</span>
+                        </div>
+
+                        <p>
+                            A well-maintained apartment
+                            with comfortable living areas.
+                        </p>
+
+                        <div class="card-actions">
+
+                            <button class="details-btn"
+                                data-action="details">
+                                View Details
+                            </button>
+
+                            <button class="favorite-btn"
+                                data-action="favorite"
+                                aria-label="Add Comfortable Apartment to favorites">
+                                ♡
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <!-- PROPERTY 5 -->
+                <article class="property-card"
+                    data-id="5"
+                    data-type="sale"
+                    data-price="5500000"
+                    data-location="ayodhya"
+                    data-beds="3">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=700"
+                        alt="Beautiful residential house"
+                        loading="lazy">
+
+                    <div class="property-body">
+
+                        <span class="property-tag">FOR SALE</span>
+
+                        <h3>Beautiful Residential House</h3>
+
+                        <p class="price">₹55,00,000</p>
+
+                        <p>📍 Ayodhya Road, Lucknow</p>
+
+                        <div class="property-details">
+                            <span>🛏 3 Bedrooms</span>
+                            <span>🚿 2 Bathrooms</span>
+                        </div>
+
+                        <p>
+                            A beautiful residential property
+                            with modern facilities.
+                        </p>
+
+                        <div class="card-actions">
+
+                            <button class="details-btn"
+                                data-action="details">
+                                View Details
+                            </button>
+
+                            <button class="favorite-btn"
+                                data-action="favorite"
+                                aria-label="Add Residential House to favorites">
+                                ♡
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <!-- PROPERTY 6 -->
+                <article class="property-card"
+                    data-id="6"
+                    data-type="rent"
+                    data-price="18000"
+                    data-location="lucknow"
+                    data-beds="3">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=700"
+                        alt="Modern furnished apartment"
+                        loading="lazy">
+
+                    <div class="property-body">
+
+                        <span class="property-tag rent-tag">FOR RENT</span>
+
+                        <h3>Furnished Apartment</h3>
+
+                        <p class="price">₹18,000 / Month</p>
+
+                        <p>📍 Indira Nagar, Lucknow</p>
+
+                        <div class="property-details">
+                            <span>🛏 3 Bedrooms</span>
+                            <span>🚿 2 Bathrooms</span>
+                        </div>
+
+                        <p>
+                            A furnished apartment with
+                            a modern kitchen and comfortable rooms.
+                        </p>
+
+                        <div class="card-actions">
+
+                            <button class="details-btn"
+                                data-action="details">
+                                View Details
+                            </button>
+
+                            <button class="favorite-btn"
+                                data-action="favorite"
+                                aria-label="Add Furnished Apartment to favorites">
+                                ♡
+                            </button>
+
+                        </div>
+
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="no-results" id="noResults">
+                <h3>No Properties Found!</h3>
+                <p>Try changing your search filters.</p>
             </div>
 
         </section>
 
 
-        <!-- PROPERTY LISTING SECTION -->
-        <section id="properties">
-
-            <h2>Our Available Properties</h2>
-
-            <p>Explore our latest property listings.</p>
-
-
-            <!-- PROPERTY CARD 1 -->
-            <article class="property-card"
-                data-type="sale"
-                data-price="4500000">
-
-                <figure>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600"
-                        alt="Modern family house with garden"
-                        width="400"
-                        loading="lazy"
-                    >
-
-                    <figcaption>Modern Family House</figcaption>
-
-                </figure>
-
-                <h3>Modern Family House</h3>
-
-                <p><strong>Price:</strong> ₹45,00,000</p>
-
-                <p><strong>Location:</strong> Lucknow, Uttar Pradesh</p>
-
-                <p><strong>Bedrooms:</strong> 3</p>
-
-                <p><strong>Property Type:</strong> Sale</p>
-
-                <p>
-                    A beautiful modern house with spacious rooms,
-                    a garden and a comfortable living area.
-                </p>
-
-                <a href="#contact">View Details</a>
-
-            </article>
-
-
-            <!-- PROPERTY CARD 2 -->
-            <article class="property-card"
-                data-type="rent"
-                data-price="15000">
-
-                <figure>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600"
-                        alt="Luxury apartment building"
-                        width="400"
-                        loading="lazy"
-                    >
-
-                    <figcaption>Luxury Apartment</figcaption>
-
-                </figure>
-
-                <h3>Luxury Apartment</h3>
-
-                <p><strong>Price:</strong> ₹15,000 / Month</p>
-
-                <p><strong>Location:</strong> Gomti Nagar, Lucknow</p>
-
-                <p><strong>Bedrooms:</strong> 2</p>
-
-                <p><strong>Property Type:</strong> Rent</p>
-
-                <p>
-                    A comfortable apartment with modern facilities
-                    and a beautiful interior.
-                </p>
-
-                <a href="#contact">View Details</a>
-
-            </article>
-
-
-            <!-- PROPERTY CARD 3 -->
-            <article class="property-card"
-                data-type="sale"
-                data-price="6500000">
-
-                <figure>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600"
-                        alt="Spacious independent house"
-                        width="400"
-                        loading="lazy"
-                    >
-
-                    <figcaption>Independent House</figcaption>
-
-                </figure>
-
-                <h3>Independent House</h3>
-
-                <p><strong>Price:</strong> ₹65,00,000</p>
-
-                <p><strong>Location:</strong> Kanpur, Uttar Pradesh</p>
-
-                <p><strong>Bedrooms:</strong> 4</p>
-
-                <p><strong>Property Type:</strong> Sale</p>
-
-                <p>
-                    A spacious independent house suitable for
-                    a large family.
-                </p>
-
-                <a href="#contact">View Details</a>
-
-            </article>
-
-
-            <!-- PROPERTY CARD 4 -->
-            <article class="property-card"
-                data-type="rent"
-                data-price="12000">
-
-                <figure>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600"
-                        alt="Comfortable apartment living room"
-                        width="400"
-                        loading="lazy"
-                    >
-
-                    <figcaption>Comfortable Apartment</figcaption>
-
-                </figure>
-
-                <h3>Comfortable Apartment</h3>
-
-                <p><strong>Price:</strong> ₹12,000 / Month</p>
-
-                <p><strong>Location:</strong> Aliganj, Lucknow</p>
-
-                <p><strong>Bedrooms:</strong> 2</p>
-
-                <p><strong>Property Type:</strong> Rent</p>
-
-                <p>
-                    A well-maintained apartment with a comfortable
-                    living area and bedrooms.
-                </p>
-
-                <a href="#contact">View Details</a>
-
-            </article>
-
-
-            <!-- PROPERTY CARD 5 -->
-            <article class="property-card"
-                data-type="sale"
-                data-price="5500000">
-
-                <figure>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600"
-                        alt="Beautiful residential house"
-                        width="400"
-                        loading="lazy"
-                    >
-
-                    <figcaption>Beautiful Residential House</figcaption>
-
-                </figure>
-
-                <h3>Beautiful Residential House</h3>
-
-                <p><strong>Price:</strong> ₹55,00,000</p>
-
-                <p><strong>Location:</strong> Ayodhya Road, Lucknow</p>
-
-                <p><strong>Bedrooms:</strong> 3</p>
-
-                <p><strong>Property Type:</strong> Sale</p>
-
-                <p>
-                    A beautiful residential property with
-                    spacious bedrooms and modern facilities.
-                </p>
-
-                <a href="#contact">View Details</a>
-
-            </article>
-
-
-            <!-- PROPERTY CARD 6 -->
-            <article class="property-card"
-                data-type="rent"
-                data-price="18000">
-
-                <figure>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600"
-                        alt="Modern furnished apartment"
-                        width="400"
-                        loading="lazy"
-                    >
-
-                    <figcaption>Furnished Apartment</figcaption>
-
-                </figure>
-
-                <h3>Furnished Apartment</h3>
-
-                <p><strong>Price:</strong> ₹18,000 / Month</p>
-
-                <p><strong>Location:</strong> Indira Nagar, Lucknow</p>
-
-                <p><strong>Bedrooms:</strong> 3</p>
-
-                <p><strong>Property Type:</strong> Rent</p>
-
-                <p>
-                    A furnished apartment with a modern kitchen
-                    and comfortable rooms.
-                </p>
-
-                <a href="#contact">View Details</a>
-
-            </article>
+        <!-- SERVICES SECTION -->
+        <section id="services" class="services">
+
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We make finding your dream home easy</p>
+            </div>
+
+            <div class="service-grid">
+
+                <div class="service-card">
+                    <div class="emoji">🏠</div>
+                    <h3>Buy Property</h3>
+                    <p>
+                        Find the perfect house or apartment
+                        according to your budget.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="emoji">🔑</div>
+                    <h3>Rent Property</h3>
+                    <p>
+                        Explore affordable rental properties
+                        in your preferred location.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="emoji">🤝</div>
+                    <h3>Property Assistance</h3>
+                    <p>
+                        Get help from our team to find
+                        the right property.
+                    </p>
+                </div>
+
+            </div>
 
         </section>
 
@@ -386,55 +1149,579 @@
         <!-- CONTACT SECTION -->
         <section id="contact">
 
-            <h2>Contact Us</h2>
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Have a question? We would love to hear from you</p>
+            </div>
 
-            <p>
-                Want to know more about a property?
-                Contact our real estate team.
-            </p>
+            <div class="contact-grid">
 
-            <address>
+                <div class="contact-info">
 
-                <p>
-                    <strong>Office:</strong>
-                    Lucknow, Uttar Pradesh, India
-                </p>
+                    <h3>Get In Touch</h3>
 
-                <p>
-                    <strong>Email:</strong>
-                    <a href="mailto:info@dreamhome.com">
-                        info@dreamhome.com
-                    </a>
-                </p>
+                    <p>
+                        <strong>Office:</strong>
+                        Lucknow, Uttar Pradesh, India
+                    </p>
 
-                <p>
-                    <strong>Phone:</strong>
-                    <a href="tel:+919876543210">
-                        +91 9876543210
-                    </a>
-                </p>
+                    <p>
+                        <strong>Email:</strong>
+                        <a href="mailto:info@dreamhome.com">
+                            info@dreamhome.com
+                        </a>
+                    </p>
 
-            </address>
+                    <p>
+                        <strong>Phone:</strong>
+                        <a href="tel:+919876543210">
+                            +91 9876543210
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>Working Hours:</strong>
+                        Monday - Saturday, 9 AM - 6 PM
+                    </p>
+
+                </div>
+
+
+                <form class="contact-form" id="contactForm">
+
+                    <h3>Send Your Enquiry</h3>
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+
+                        <input type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                            required
+                            minlength="2">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+
+                        <input type="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+
+                        <input type="tel"
+                            id="phone"
+                            placeholder="Enter phone number"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+
+                        <textarea id="message"
+                            placeholder="Write your enquiry..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="primary-btn">
+                        Submit Enquiry
+                    </button>
+
+                </form>
+
+            </div>
 
         </section>
 
     </main>
 
 
+    <!-- PROPERTY DETAILS MODAL -->
+    <div class="modal" id="propertyModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle">
+
+        <div class="modal-content">
+
+            <button class="close-modal"
+                id="closeModal"
+                aria-label="Close dialog">
+                &times;
+            </button>
+
+            <div id="modalDetails"></div>
+
+        </div>
+
+    </div>
+
+
     <!-- FOOTER -->
     <footer>
 
+        <h2>Dream Home Real Estate</h2>
+
+        <p>Making Your Dream Home a Reality!</p>
+
         <p>
-            &copy; 2026 Dream Home Real Estate.
+            © 2026 Dream Home Real Estate.
             All Rights Reserved.
         </p>
 
-        <p>Group 16 - Real Estate Listing Page</p>
+        <p>Group 16 - Real Estate Listing Project</p>
 
-        <a href="#home">Back to Top</a>
+        <p>
+            <a href="#home" class="back-top">
+                Back to Top ↑
+            </a>
+        </p>
 
     </footer>
 
-</body>
 
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // GET ALL REQUIRED ELEMENTS
+
+        const filterForm = document.getElementById("filterForm");
+
+        const propertyCards = [
+            ...document.querySelectorAll(".property-card")
+        ];
+
+        const propertyGrid = document.getElementById("propertyGrid");
+
+        const propertyCount = document.getElementById("propertyCount");
+
+        const noResults = document.getElementById("noResults");
+
+        const propertyModal = document.getElementById("propertyModal");
+
+        const modalDetails = document.getElementById("modalDetails");
+
+        let currentFilter = "all";
+
+
+        // FAVORITE PROPERTY STORAGE
+
+        let favorites = new Set();
+
+        try {
+            const savedFavorites = JSON.parse(
+                localStorage.getItem("dreamHomeFavorites") || "[]"
+            );
+
+            if (Array.isArray(savedFavorites)) {
+                favorites = new Set(
+                    savedFavorites.filter(id =>
+                        ["1", "2", "3", "4", "5", "6"].includes(String(id))
+                    ).map(String)
+                );
+            }
+        } catch (error) {
+            favorites = new Set();
+        }
+
+
+        // UPDATE FAVORITE BUTTONS
+
+        function updateFavorites() {
+
+            propertyCards.forEach(card => {
+
+                const id = card.dataset.id;
+
+                const button = card.querySelector(
+                    '[data-action="favorite"]'
+                );
+
+                const saved = favorites.has(id);
+
+                button.textContent = saved ? "♥" : "♡";
+
+                button.classList.toggle("saved", saved);
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(saved)
+                );
+
+            });
+
+            try {
+                localStorage.setItem(
+                    "dreamHomeFavorites",
+                    JSON.stringify([...favorites])
+                );
+            } catch (error) {
+                console.warn("Favorites could not be saved.");
+            }
+        }
+
+
+        // FILTER PROPERTIES
+
+        function filterProperties() {
+
+            const type = document.getElementById(
+                "propertyType"
+            ).value;
+
+            const location = document.getElementById(
+                "location"
+            ).value;
+
+            const bedrooms = document.getElementById(
+                "bedrooms"
+            ).value;
+
+            const minPrice = Number(
+                document.getElementById("minPrice").value
+            ) || 0;
+
+            const maxInput = document.getElementById(
+                "maxPrice"
+            ).value;
+
+            const maxPrice = maxInput === ""
+                ? Infinity
+                : Number(maxInput);
+
+            const keyword = document.getElementById(
+                "keyword"
+            ).value.toLowerCase().trim();
+
+            const sort = document.getElementById(
+                "sortProperties"
+            ).value;
+
+            if (maxPrice < minPrice) {
+                alert("Maximum price cannot be less than minimum price.");
+                return;
+            }
+
+            let visibleCards = [];
+
+            propertyCards.forEach(card => {
+
+                const cardType = card.dataset.type;
+
+                const cardPrice = Number(card.dataset.price);
+
+                const cardLocation = card.dataset.location;
+
+                const cardBedrooms = card.dataset.beds;
+
+                const cardText = card.textContent.toLowerCase();
+
+                let show = true;
+
+                if (type !== "all" && cardType !== type) {
+                    show = false;
+                }
+
+                if (location !== "all" &&
+                    cardLocation !== location) {
+                    show = false;
+                }
+
+                if (bedrooms !== "all" &&
+                    cardBedrooms !== bedrooms) {
+                    show = false;
+                }
+
+                if (cardPrice < minPrice ||
+                    cardPrice > maxPrice) {
+                    show = false;
+                }
+
+                if (keyword && !cardText.includes(keyword)) {
+                    show = false;
+                }
+
+                if (currentFilter === "sale" &&
+                    cardType !== "sale") {
+                    show = false;
+                }
+
+                if (currentFilter === "rent" &&
+                    cardType !== "rent") {
+                    show = false;
+                }
+
+                if (currentFilter === "favorites" &&
+                    !favorites.has(card.dataset.id)) {
+                    show = false;
+                }
+
+                card.style.display = show ? "block" : "none";
+
+                if (show) {
+                    visibleCards.push(card);
+                }
+
+            });
+
+
+            // SORT PROPERTIES
+
+            if (sort === "low") {
+                visibleCards.sort((a, b) =>
+                    Number(a.dataset.price) -
+                    Number(b.dataset.price)
+                );
+            }
+
+            if (sort === "high") {
+                visibleCards.sort((a, b) =>
+                    Number(b.dataset.price) -
+                    Number(a.dataset.price)
+                );
+            }
+
+            visibleCards.forEach(card => {
+                propertyGrid.appendChild(card);
+            });
+
+
+            // UPDATE PROPERTY COUNT
+
+            propertyCount.textContent =
+                `Showing ${visibleCards.length} properties`;
+
+            noResults.style.display =
+                visibleCards.length === 0 ? "block" : "none";
+
+        }
+
+
+        // SEARCH FORM
+
+        filterForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            filterProperties();
+
+            document.getElementById("properties").scrollIntoView({
+                behavior: "smooth"
+            });
+
+        });
+
+
+        // RESET FILTERS
+
+        filterForm.addEventListener("reset", function() {
+
+            currentFilter = "all";
+
+            document.querySelectorAll(
+                ".type-buttons button"
+            ).forEach(button => {
+                button.classList.toggle(
+                    "active",
+                    button.dataset.filter === "all"
+                );
+            });
+
+            document.getElementById(
+                "sortProperties"
+            ).value = "default";
+
+            setTimeout(filterProperties, 0);
+
+        });
+
+
+        // QUICK PROPERTY FILTER BUTTONS
+
+        document.querySelectorAll(
+            ".type-buttons button"
+        ).forEach(button => {
+
+            button.addEventListener("click", function() {
+
+                currentFilter = this.dataset.filter;
+
+                document.querySelectorAll(
+                    ".type-buttons button"
+                ).forEach(btn => {
+                    btn.classList.remove("active");
+                });
+
+                this.classList.add("active");
+
+                filterProperties();
+
+            });
+
+        });
+
+
+        // SORTING
+
+        document.getElementById(
+            "sortProperties"
+        ).addEventListener("change", filterProperties);
+
+
+        // FAVORITES AND DETAILS USING EVENT DELEGATION
+
+        propertyGrid.addEventListener("click", function(event) {
+
+            const button = event.target.closest("button[data-action]");
+
+            if (!button) return;
+
+            const card = button.closest(".property-card");
+
+            if (!card) return;
+
+            const id = card.dataset.id;
+
+            if (button.dataset.action === "favorite") {
+
+                if (favorites.has(id)) {
+                    favorites.delete(id);
+                } else {
+                    favorites.add(id);
+                }
+
+                updateFavorites();
+
+                filterProperties();
+
+            }
+
+            if (button.dataset.action === "details") {
+                showPropertyDetails(card);
+            }
+
+        });
+
+
+        // SHOW PROPERTY DETAILS
+
+        function showPropertyDetails(card) {
+
+            const image = card.querySelector("img").src;
+
+            const title = card.querySelector("h3").textContent;
+
+            const price = card.querySelector(".price").textContent;
+
+            const description = card.querySelector(
+                ".property-body > p:not(.price)"
+            ).textContent;
+
+            const location = card.querySelector(
+                ".property-body > p:nth-of-type(2)"
+            ).textContent;
+
+            const bedrooms = card.dataset.beds;
+
+            const type = card.dataset.type === "sale"
+                ? "For Sale"
+                : "For Rent";
+
+            modalDetails.innerHTML = `
+                <img src="${image}" alt="Property image">
+                <h2 id="modalTitle">${title}</h2>
+                <h3 class="price">${price}</h3>
+                <p>${location}</p>
+                <p>Bedrooms: ${bedrooms}</p>
+                <p>Property Type: ${type}</p>
+                <p>${description}</p>
+                <br>
+                <a href="#contact" class="primary-btn"
+                    id="modalEnquiry">
+                    Enquire Now
+                </a>
+            `;
+
+            propertyModal.style.display = "flex";
+
+            document.getElementById(
+                "modalEnquiry"
+            ).addEventListener("click", closeModal);
+
+            document.getElementById("closeModal").focus();
+
+        }
+
+
+        // CLOSE MODAL
+
+        function closeModal() {
+
+            propertyModal.style.display = "none";
+
+        }
+
+        document.getElementById(
+            "closeModal"
+        ).addEventListener("click", closeModal);
+
+
+        propertyModal.addEventListener("click", function(event) {
+
+            if (event.target === propertyModal) {
+                closeModal();
+            }
+
+        });
+
+
+        // CLOSE MODAL WITH ESCAPE KEY
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+                closeModal();
+            }
+
+        });
+
+
+        // CONTACT FORM
+
+        document.getElementById(
+            "contactForm"
+        ).addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            if (!this.reportValidity()) return;
+
+            const name = document.getElementById(
+                "name"
+            ).value.trim();
+
+            alert(
+                `Thank you, ${name}! Your enquiry has been received in this demo.`
+            );
+
+            this.reset();
+
+        });
+
+
+        // INITIALIZE WEBSITE
+
+        updateFavorites();
+
+        filterProperties();
+
+    </script>
+
+</body>
 </html>
